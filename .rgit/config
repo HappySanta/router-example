@@ -1,0 +1,22 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@bitbucket.org:happysanta/vk-apps-template.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "github"]
+	url = git@github.com:HappySanta/vkminiapps-template.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+[branch "v2"]
+	remote = origin
+	merge = refs/heads/v2
+[branch "externalRouting"]
+	remote = origin
+	merge = refs/heads/externalRouting

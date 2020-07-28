@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 6378946a72e93a3b9880ac9895a4c16f3130f9e7 Иван Недзвецкий <stels-cs@yandex.ru> 1568302729 +0300	clone: from git@bitbucket.org:happysanta/vk-apps-template.git
+6378946a72e93a3b9880ac9895a4c16f3130f9e7 8ed9e1a182505950fa90e23899affe0b5553a379 Иван Недзвецкий <stels-cs@yandex.ru> 1571835264 +0300	pull origin master: Fast-forward
+8ed9e1a182505950fa90e23899affe0b5553a379 999b9d2696cb4b91fafb09a8481432c09874618d Иван Недзвецкий <stels-cs@yandex.ru> 1580923948 +0300	pull origin master: Fast-forward
+999b9d2696cb4b91fafb09a8481432c09874618d 97e0f94f98bdc9c4d5405fd7ed6505ce78d9ca8c Иван Недзвецкий <stels-cs@yandex.ru> 1580924318 +0300	commit: метод pushViewHistory не добавлял запись в историю если мы пушим модальную страницу. Это не правильно потому что неверно начинает работать свайм назад.
+97e0f94f98bdc9c4d5405fd7ed6505ce78d9ca8c b1c37e9c4a6f83db573a4c64dd98984cc0e25159 Иван Недзвецкий <stels-cs@yandex.ru> 1580924382 +0300	commit: AMIN_TIME -- слишком религиозное название константы, изменено на ANIM_TIME
+b1c37e9c4a6f83db573a4c64dd98984cc0e25159 f6cd5418735d5581b8e27cc50160cb007bb83b1f Иван Недзвецкий <stels-cs@yandex.ru> 1582189799 +0300	pull origin master: Fast-forward
+f6cd5418735d5581b8e27cc50160cb007bb83b1f 8aff99d150b20018d1a675b08c5ba28ad89e9ab8 Иван Недзвецкий <stels-cs@yandex.ru> 1585575695 +0300	pull --no-stat -v --progress origin master: Fast-forward
+8aff99d150b20018d1a675b08c5ba28ad89e9ab8 a987802406f2f3a0b17c2b9400368868cae8c40f Иван Недзвецкий <stels-cs@yandex.ru> 1589382240 +0300	commit: Обновления пакетов из-за которыйх возможно не работал Android 6
