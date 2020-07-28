@@ -1,5 +1,0 @@
-0000000000000000000000000000000000000000 a987802406f2f3a0b17c2b9400368868cae8c40f Иван Недзвецкий <stels-cs@yandex.ru> 1594463550 +0500	branch: Created from HEAD
-a987802406f2f3a0b17c2b9400368868cae8c40f 69bc6ef76d258d357c21c4ea9ba63163cbf45c4d Иван Недзвецкий <stels-cs@yandex.ru> 1595239327 +0300	commit: stash v2
-69bc6ef76d258d357c21c4ea9ba63163cbf45c4d 0755b4a9f739c7bb47293efbf0efcf1dc743a115 Иван Недзвецкий <stels-cs@yandex.ru> 1595268507 +0300	commit: Отладка основных фич роутинга
-0755b4a9f739c7bb47293efbf0efcf1dc743a115 6cec6f5362b0c53d361ec80f66fb93cbe714ea34 Иван Недзвецкий <stels-cs@yandex.ru> 1595359511 +0300	commit: infinity scroll
-6cec6f5362b0c53d361ec80f66fb93cbe714ea34 8866c96f268b2753b30a46773aec7661f2fb854a Иван Недзвецкий <stels-cs@yandex.ru> 1595921917 +0300	commit: v2 route next
