@@ -34,12 +34,14 @@ ReactDOM.render(<RouterContext.Provider value={router}>
 `src/App.js`
 
 ```js
-import {useRouter} from "@happysanta/router"
+import { useLocation } from '@happysanta/router';
 
 const App = () => {
-  const router = useRouter();
+  const location = useLocation();
 
-  return <View id={VIEW_MAIN} history={router.getViewHistory(VIEW_MAIN)} activePanel={router.getPanelId()}>
+  return <View id={VIEW_MAIN}
+			   history={location.getViewHistory(VIEW_MAIN)}
+			   activePanel={location.getViewActivePanel(VIEW_MAIN)}>
       <Home id={PANEL_MAIN}/>
       <Persik id={PANEL_PERSIK}/>
   </View>
@@ -47,15 +49,81 @@ const App = () => {
 
 export default App;
 ```
+или без хуков, на HOC
+```js
+import {withRouter} from "@happysanta/router"
 
+class App extends React.Component {
+	render() {
+		const {location} = this.props
+
+		return <View id={VIEW_MAIN}
+					 history={location.getViewHistory(VIEW_MAIN)}
+					 activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+			<Home id={PANEL_MAIN}/>
+			<Persik id={PANEL_PERSIK}/>
+		</View>
+	}
+}
+
+export default withRouter(App);
+```
 
 ### Для перехода на страницу пользоваться функциями из роутреа
 
 `src/panels/Home.js`
-```js
-router.pushPage(PAGE_PERSIK)
-```
 
 ```js
+router.pushPage(PAGE_PERSIK)
+router.replacePage(PAGE_PERSIK)
+
 router.popPage()
+```
+
+
+### Решение проблемы с быстрым переключением страниц
+
+используйте `useThrottlingLocation` или `withThrottlingRouter`
+
+```js
+import { useThrottlingLocation } from '@happysanta/router';
+
+const App = () => {
+	const [location, onTransitionEnd] = useThrottlingLocation();
+
+	return <View id={VIEW_MAIN}
+				 onTransition={() => onTransitionEnd()}
+				 onSwipeBack={() => onTransitionEnd()}
+				 history={location.getViewHistory(VIEW_MAIN)}
+				 activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+		<Home id={PANEL_MAIN}/>
+		<Persik id={PANEL_PERSIK}/>
+		<About id={PANEL_ABOUT}/>
+	</View>;
+};
+
+export default App;
+```
+
+
+```js
+import { withThrottlingRouter } from '@happysanta/router';
+
+class App extends React.Component {
+	render() {
+		const { location, onTransitionEnd } = this.props;
+
+		return <View id={VIEW_MAIN}
+					 onTransition={() => onTransitionEnd()}
+					 onSwipeBack={() => onTransitionEnd()}
+					 history={location.getViewHistory(VIEW_MAIN)}
+					 activePanel={location.getViewActivePanel(VIEW_MAIN)}>
+			<Home id={PANEL_MAIN}/>
+			<Persik id={PANEL_PERSIK}/>
+			<About id={PANEL_ABOUT}/>
+		</View>;
+	}
+}
+
+export default withThrottlingRouter(App);
 ```
