@@ -8,17 +8,25 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
-import { useParams, useRouter } from '@happysanta/router';
+import { useFirstPageCheck, useParams, useRouter } from '@happysanta/router';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
+import { PAGE_MAIN } from '../routers';
 
 const osName = platform();
 
 const Product = props => {
 	const router = useRouter();
+	const isFirstPage = useFirstPageCheck();
 	const { id } = useParams();
 	return <Panel id={props.id}>
 		<PanelHeader
-			left={<PanelHeaderButton onClick={() => router.popPage()}>
+			left={<PanelHeaderButton onClick={() => {
+				if (isFirstPage) {
+					router.replacePage(PAGE_MAIN)
+				} else {
+					router.popPage()
+				}
+			}}>
 				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
 			</PanelHeaderButton>}
 		>

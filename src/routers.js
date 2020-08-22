@@ -2,17 +2,21 @@ import { Page, Router } from '@happysanta/router';
 
 export const PAGE_MAIN = '/';
 export const PAGE_PERSIK = '/persik';
+
+export const PANEL_MAIN = 'panel_main';
+export const PANEL_PERSIK = 'panel_persik';
+
+export const VIEW_MAIN = 'view_main';
+
 export const PAGE_ABOUT = '/about';
 export const PAGE_INFO = '/info';
 export const PAGE_PRODUCT = '/product/:id([0-9]+)';
 
-export const PANEL_MAIN = 'panel_main';
-export const PANEL_PERSIK = 'panel_persik';
+
 export const PANEL_ABOUT = 'panel_about';
 export const PANEL_INFO = 'panel_info';
 export const PANEL_PRODUCT = 'panel_product';
 
-export const VIEW_MAIN = 'view_main';
 export const VIEW_INFO = 'view_info';
 
 export const MODAL_CARD = 'modal_card';
@@ -44,6 +48,15 @@ router.onEnterPage(PAGE_PRODUCT, (route) => {
 });
 
 router.on('update', (nextRote, oldRoute) => {
+	nextRote.getPageId() // /product/:id([0-9]+)
+	nextRote.getParams() // { id: "12" }
+	nextRote.getPanelId() // panel_product
+	nextRote.getViewId() // view_main
+	nextRote.getLocation() // /product/12
+	nextRote.isModal() // false
+	nextRote.isPopup() // false
+	nextRote.hasOverlay() // false
+
 	if (oldRoute) {
 		console.log(`move from page ${oldRoute.getLocation()} -> ${nextRote.getLocation()}`);
 	} else {

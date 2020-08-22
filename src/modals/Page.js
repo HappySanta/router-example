@@ -33,8 +33,7 @@ export function Page({ id }) {
 		</List>
 		<Div>
 			<Button size="xl" level="2" onClick={() => {
-				router.popPage();
-				router.afterUpdate().then(() => router.pushPopup(POPOUT_CONFIRM));
+				router.replacePopup(POPOUT_CONFIRM)
 			}}>
 				Отправить деньги
 			</Button>
