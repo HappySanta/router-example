@@ -3,7 +3,7 @@ import 'core-js/features/set';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import bridge from '@vkontakte/vk-bridge';
-import App from './App.hook';
+import App from './App';
 import { RouterContext } from '@happysanta/router';
 import { router } from './routers';
 import { ConfigProvider } from '@vkontakte/vkui';

@@ -36,9 +36,9 @@ const Product = props => {
 			product id #{id}
 		</Placeholder>
 		<br/>
-		<Button size="xl" level="2" mode="secondary" onClick={() => router.popPage()}>
+		{!isFirstPage && <Button size="xl" level="2" mode="secondary" onClick={() => router.popPage()}>
 			Назад
-		</Button>
+		</Button>}
 	</Panel>;
 };
 

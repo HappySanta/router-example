@@ -5,7 +5,7 @@ import Home from './panels/Home';
 import Persik from './panels/Persik';
 import { MODAL_CARD, MODAL_PAGE, PANEL_ABOUT, PANEL_INFO, PANEL_MAIN, PANEL_PERSIK, PANEL_PRODUCT, POPOUT_CONFIRM, VIEW_INFO, VIEW_MAIN } from './routers';
 import About from './panels/About';
-import { withThrottlingRouter } from '@happysanta/router';
+import { withRouter } from '@happysanta/router';
 import Info from './panels/Info';
 import { Card } from './modals/Card';
 import { Page } from './modals/Page';
@@ -31,7 +31,7 @@ class App extends React.Component {
 	}
 
 	render() {
-		const { location, onTransitionEnd, router } = this.props;
+		const { location, router } = this.props;
 
 		const modal = this.modal();
 		const popout = this.popout();
@@ -39,11 +39,7 @@ class App extends React.Component {
 			<View id={VIEW_MAIN}
 				  popout={popout}
 				  modal={modal}
-				  onTransition={() => onTransitionEnd()}
-				  onSwipeBack={() => {
-					  onTransitionEnd();
-					  router.popPage();
-				  }}
+				  onSwipeBack={() => router.popPage()}
 				  history={location.hasOverlay() ? [] : location.getViewHistory(VIEW_MAIN)}
 				  activePanel={location.getViewActivePanel(VIEW_MAIN)}>
 				<Home id={PANEL_MAIN}/>
@@ -55,11 +51,7 @@ class App extends React.Component {
 			<View id={VIEW_INFO}
 				  modal={modal}
 				  popout={popout}
-				  onTransition={() => onTransitionEnd()}
-				  onSwipeBack={() => {
-					  onTransitionEnd();
-					  router.popPage();
-				  }}
+				  onSwipeBack={() => router.popPage()}
 				  history={location.hasOverlay() ? [] : location.getViewHistory(VIEW_INFO)}
 				  activePanel={location.getViewActivePanel(VIEW_INFO)}>
 				<Info id={PANEL_INFO}/>
@@ -68,6 +60,6 @@ class App extends React.Component {
 	}
 }
 
-export default withThrottlingRouter(App);
+export default withRouter(App);
 
 
