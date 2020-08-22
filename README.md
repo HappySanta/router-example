@@ -1,10 +1,8 @@
-# @happysanta/router
+# Демо проект с @happysanta/router
 
+live demo [vk.com/app7574523](https://vk.com/app7574523)
 
-### Определить роуты для Panel
-
-`src/routers.js`
-
+[Описание роутов src/router.js](src/routers.js)
 ```js
 const routes = {
   [PAGE_MAIN]: new Page(PANEL_MAIN, VIEW_MAIN),
@@ -16,9 +14,7 @@ export const router = new Router(routes);
 router.start();
 ```
 
-### Подключить RouterContext.Provider
-
-`src/index.js`
+[Подключение src/index.js](src/index.js)
 
 ```js
 import { RouterContext } from '@happysanta/router';
@@ -29,9 +25,7 @@ ReactDOM.render(<RouterContext.Provider value={router}>
 </RouterContext.Provider>, document.getElementById('root'));
 ```
 
-### Подключить роутер в корневом компоненте
-
-`src/App.js`
+[useLocation src/App.hook.js](src/App.hook.js)
 
 ```js
 import { useLocation } from '@happysanta/router';
@@ -49,7 +43,8 @@ const App = () => {
 
 export default App;
 ```
-или без хуков, на HOC
+
+[withRouter src/App.js](src/App.js)
 ```js
 import {withRouter} from "@happysanta/router"
 
@@ -69,61 +64,11 @@ class App extends React.Component {
 export default withRouter(App);
 ```
 
-### Для перехода на страницу пользоваться функциями из роутреа
-
-`src/panels/Home.js`
+[pushPage src/panels/Home.js#18](src/panels/Home.js#18)
 
 ```js
 router.pushPage(PAGE_PERSIK)
 router.replacePage(PAGE_PERSIK)
 
 router.popPage()
-```
-
-
-### Решение проблемы с быстрым переключением страниц
-
-используйте `useThrottlingLocation` или `withThrottlingRouter`
-
-```js
-import { useThrottlingLocation } from '@happysanta/router';
-
-const App = () => {
-	const [location, onTransitionEnd] = useThrottlingLocation();
-
-	return <View id={VIEW_MAIN}
-				 onTransition={() => onTransitionEnd()}
-				 onSwipeBack={() => onTransitionEnd()}
-				 history={location.getViewHistory(VIEW_MAIN)}
-				 activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-		<Home id={PANEL_MAIN}/>
-		<Persik id={PANEL_PERSIK}/>
-		<About id={PANEL_ABOUT}/>
-	</View>;
-};
-
-export default App;
-```
-
-
-```js
-import { withThrottlingRouter } from '@happysanta/router';
-
-class App extends React.Component {
-	render() {
-		const { location, onTransitionEnd } = this.props;
-
-		return <View id={VIEW_MAIN}
-					 onTransition={() => onTransitionEnd()}
-					 onSwipeBack={() => onTransitionEnd()}
-					 history={location.getViewHistory(VIEW_MAIN)}
-					 activePanel={location.getViewActivePanel(VIEW_MAIN)}>
-			<Home id={PANEL_MAIN}/>
-			<Persik id={PANEL_PERSIK}/>
-			<About id={PANEL_ABOUT}/>
-		</View>;
-	}
-}
-
-export default withThrottlingRouter(App);
 ```
